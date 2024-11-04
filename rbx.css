@@ -1,0 +1,107 @@
+   @font-face {
+            font-family: 'Refinery 95';
+            src: url('https://dress2.pages.dev/fonts/refinery-95-regular.ttf') format('truetype');
+        }
+
+        body {background: linear-gradient(180deg, #3e1b47, #1a1a2e);background-repeat: no-repeat;background-size: cover;background-position: center;font-family: 'Refinery 95';color: #e6c800;}
+        .logo {display: flex;justify-content: center;padding: 30px;}
+        .logo img {width: 240px;}
+        h1 {font-size: 1rem;font-weight: bold;text-align: center;}
+
+        .xload .item {margin: 10px 0;}
+        .xload .item .img img {width: 100%;border-radius: 50%;}
+        .xload  .item.active img {box-shadow: 0 0 30px 10px rgba(249, 115, 4, 0.9);}
+        .item.active .title {color: #fff;}
+        .item .title {font-weight: bold;text-align: center;margin-top: 10px;font-size: .9rem;}
+        .row {margin: 5px 15px;}
+
+        footer {margin-top: 40px;margin-bottom: 10px;}
+        .imgs {display: flex;justify-content: center;align-items: center;}
+        .xload .imgs img {width: 110px;margin: 7px;}
+
+        .action {bottom: 20px;left: 0;right: 0;display: flex;position: fixed;}
+        .xload .btn-action {display: flex;justify-content: center;}
+        .btn-action > button {font-weight: bold;padding: 10px 30px;border-radius: 5px;color: #fff;border: 3px solid rgba(255,160,225,1);background: rgb(255,160,225);
+            background: linear-gradient(180deg, rgb(254 121 231) 0%, rgb(252 89 174) 49%);box-shadow: 0px 0px 20px 1px rgba(243,23,226,.6);}
+            
+            .xload .alert-danger {position: fixed;bottom: 77px;left: 0;right: 0;padding: 10px;color: red;text-align: center;background-color: #1a1a2e;}
+
+
+        .xload .information {position: fixed;top: 0;right: 0;bottom: 0;left: 0;background-color: rgba(0, 0, 0, .8);padding: 30px 15px;overflow: scroll;z-index: 999;}
+        .xload .information > div {background: linear-gradient(180deg, #3e1b47, #1a1a2e);padding: 20px 30px;border: 2px solid #e6c800;border-radius: 5px;}
+        .xload .information .logos {display: flex;justify-content: center;}
+        .xload .information .logos img {width: 180px;}
+        .username input {width: 100%;padding: 10px 10px;margin: 19px 0 10px 0;background-color: #492951;border: none;border-radius: 3px;color: #fff;border: 2px solid #733483;}
+        .platform-app {display: flex;justify-content: space-between;margin: 10px 0 20px 0;}
+        .platform-app > div {width: 50px;height: 50px;display: flex;justify-content: center;align-items: center;padding: 10px;background-color: #e6c800;border-radius: 3px;}
+        .xload .platform-app > div.active {background-color: rgb(252 89 174);transition: .3s;}
+        .platform-app img {width: 100%;}
+        .alert-danger-2 {color: red;text-align: center;font-size: .75rem;margin-bottom: 15px;}
+
+        .xload .step-2 h2 {font-weight: bold;font-size: 1.1rem;text-align: center;}
+        /* .user img {width: 70px;height: 70px;border-radius: 50%;background-color: #fff;} */
+        .xload .user {position: absolute;right: 0;}
+        .roblox-server {position: absolute;left: 0;}
+        .user .name, .roblox-server .name {font-weight: bold;margin-top: 5px;}
+        .transorm {display: flex;justify-content: space-between;margin-top: 40px;position: relative;height: 120px;}
+        .roblox-server {text-align: center;font-weight: bold;}
+         img.server {width: 70px;height: 70px;border-radius: 50%;background-color: #fff;padding: 10px;}
+        .img-server {display: flex;justify-content: center;margin-top: -18px;}
+        .img-server img {width: 30px;border: 3px solid #fff;border-radius: 50%;}
+
+        .img-1 {position: absolute;width: 50px;height: 50px;top: 50%;transform: translateY(-90%);z-index: 0;right: 70%;}
+
+        .xload .avatar {display: flex;justify-content: center;}
+        .xload .avatar img {width: 100px;height: 100px;background-color: #fff;border-radius: 50%;margin-top: 20px;}
+        .sending {text-align: center;margin-top: 10px;}
+
+        .loading {display: flex;justify-content: center;}
+        .xload .loading img {width: 90px;}
+
+        .rotate {animation: rotate 2s linear infinite; }
+        @keyframes rotate {
+    from {
+        transform: rotate(0deg); /* Starting rotation */
+    }
+    to {
+        transform: rotate(360deg); /* Ending rotation */
+    }
+}
+
+.xload .users {display: flex;margin-top: 25px;align-items: center;}
+        .users img {width: 70px;height: 70px;border-radius: 50%;background-color: #fff;}
+        .users .img {margin-right: 10px;}
+
+        .xload .items {margin-top: 25px;}
+        .xload .img-vip {margin-right: 13px;margin-top: 7px;margin-bottom: 10px;position: relative;}
+        .xload .img-vip .success-item, .xload .img-vip .error-item {position: absolute;bottom: 0;right: 0px;width: 22px;height: 22px;background-color:#22bb33;display: flex;justify-content: center;align-items: center;padding: 2px;border-radius: 50%;}
+        .xload .img-vip .success-item img, .xload .img-vip .error-item img {width: 100%;}
+        .xload .img-vip .error-item {background-color:#f28400;}
+        .xload .img-vip img {width: 60px;border-radius: 50%;}
+        .item-vip {display: flex;align-items: center;}
+        .xload .sub {width: 100%;}
+        .xload .sub .text {font-size: .8rem;margin-bottom: 4px;}
+        .sub .prog {width: 100%;height: 7px;background-color: #ffffff48;padding: 1px;border-radius: 2px;}
+        .sub .pro {width: 0%;background-color: #e6c800;height: 100%;border-radius: 2px;}
+
+        .xload .human {text-align: center;font-weight: bold;margin-top: 20px;}
+
+
+
+        .xload .locker_ads {position: fixed;top: 0;right: 0;bottom: 0;left: 0;background-color: rgba(0, 0, 0, .8);padding: 30px 15px;color: #fff;overflow: scroll;z-index: 888888;}
+        .xload .locker_ads > div {background: linear-gradient(180deg, #3e1b47, #1a1a2e);padding: 20px 30px;border: 2px solid #e6c800;border-radius: 5px;}
+        .xload .locker_ads .logos {display: flex;justify-content: center;}
+        .xload .locker_ads .logos img {width: 80%;}
+        .locker_ads .main-title {text-align: center;font-weight: bold;font-size: 1.4rem;margin-top: 10px;}
+        .locker_ads p {text-align: center;font-size: .9rem;}
+        .locker_ads .offers .offer {margin: 19px 0;font-weight: bold;padding: 8px 15px;border-radius: 5px;color: #fff;border: 2px solid rgba(255,160,225,1);background: rgb(255,160,225);
+            background: linear-gradient(180deg, rgb(254 121 231) 0%, rgb(252 89 174) 49%);position: relative;}
+        .locker_ads .offer .subs {position: absolute;top: -13px;right: 10px;background-color: #f28400;font-size: .7rem;padding: 3px 10px;border-radius: 4px;font-weight: bold;}
+        .locker_ads .offers .offer a {text-decoration: none;color: #fff;font-size: .8rem;}
+
+
+        .xload .cliamed {position: fixed;top: 10px;background-color: #fff;left: 10px;color: #000;display: flex;border-radius: 10px;padding: 3px 20px 0px 7px;align-items: center;font-size: .8rem;z-index: 8;}
+        .xload .cliamed .img {margin-right: 10px;}
+        .cliamed .img img {width: 60px;}
+        .cliamed .name {font-weight: bold;}
+        .cliamed p {margin: 0;}
