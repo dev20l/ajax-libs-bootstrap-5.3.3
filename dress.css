@@ -1,0 +1,604 @@
+/* Import your custom font */
+@font-face {
+    font-family: 'Refinery 95';
+    src: url('fonts/refinery-95-regular.ttf') format('truetype');
+}
+
+/* Reset some browser defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling with a lighter pink-to-white gradient background */
+body {
+    font-family: 'Refinery 95', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    max-width: 100vw; /* Ensure the width does not exceed the viewport width */
+    overflow-y: auto;
+    background: linear-gradient(180deg, #ffd1e1, #ffffff); /* Lighter pink */
+}
+
+/* Centralize everything within the container */
+.container {
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+    transition: opacity 0.5s ease-out; /* Smooth fade-out effect */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers all content */
+    justify-content: flex-start;
+    flex-grow: 1;
+    height: 100%;
+    z-index: 2;
+    
+}
+
+/* Central image (logo) - NOT circular */
+.central-image {
+    max-width: 300px; /* Adjust size of the logo */
+    width: 100%;
+    height: auto; /* Keep its natural proportions */
+    margin-bottom: 20px;
+    object-fit: cover; /* Ensure it looks good even if the aspect ratio changes */
+    margin-top: 50px;
+}
+
+/* Input field styling */
+.user-input {
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Refinery 95', sans-serif;
+    border: 2px solid #ff99cc;
+    border-radius: 25px;
+    outline: none;
+    margin-bottom: 5px;
+    width: 100%;
+    max-width: 350px;
+    transition: border-color 0.3s ease;
+    text-align: left; /* Aligns the user's input text to the left */
+}
+
+.user-input:focus {
+    border-color: #ff66b2;
+}
+
+/* Enhanced Button styling (more visually appealing) */
+#generate-btn {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    background: linear-gradient(45deg, #ff66b2, #ff4081); /* Gradient background */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(255, 102, 178, 0.4); /* Subtle shadow for depth */
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: auto;
+    max-width: 200px;
+    text-align: center;
+}
+
+#generate-btn:hover {
+    background-color: #ff4081;
+    box-shadow: 0 8px 20px rgba(255, 64, 129, 0.7); /* Brighter shadow on hover */
+    transform: scale(1.1); /* Slightly larger on hover */
+}
+
+/* Text above images */
+.image-instruction {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+    align-items: flex-start;
+    padding-bottom: 70px;
+}
+
+.image-grid > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 150px; /* Fixed width to standardize layout */
+}
+
+/* Only the images in the grid are circular */
+.flex-image {
+    width: 100%;
+    max-width: 250px; /* Responsive size */
+    height: auto;
+    border-radius: 50%; /* Makes these images circular */
+    object-fit: cover; /* Ensures they aren't distorted */
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Image glow effect - increased brightness */
+.flex-image.active {
+    box-shadow: 0 0 30px 10px rgba(255, 102, 178, 0.9); /* Brighter pink glow when active */
+}
+
+/* Descriptions for each image */
+.image-description {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 5px;
+    text-align: center;
+    font-weight: 600; /* Make it bold for better visibility */
+}
+
+#error-msg {
+    font-size: 1rem;
+    color: red;
+    margin-bottom: 15px; /* Add margin below the warning */
+}
+
+#warning-msg, #item-warning-msg {
+    font-size: 1rem;
+    color: red;
+    text-align: center; /* Keep it centered below instruction */
+}
+
+.hidden {
+    display: none;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    .flex-image {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flex-image {
+        max-width: 120px;
+    }
+}
+
+.selectplatformtext {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Sequence - -------------------------------------------------------------------------------------------------------------------------------- */
+/* Sequence - --------------------------------------------------------------------------------------------------------------------------------- */
+/* Sequence - --------------------------------------------------------------------------------------------------------------------------------- */
+/* Sequence   --------------------------------------------------------------------------------------------------------------------------------- */
+/* Sequence -  --------------------------------------------------------------------------------------------------------------------------------- */
+
+.sequence-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 450px;
+    height: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #ff99cc;
+    border-radius: 25px;
+    margin-top: 20px;
+    opacity: 1; /* Always visible */
+    transition: opacity 0.5s ease-out;
+    z-index: 2;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .sequence-box {
+        width: 95%;  /* Set width to 95% on mobile */
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+/* Pulse animation for elements */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Slight pulse effect */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse-animation {
+    animation: pulse 1s infinite;
+    animation-timing-function: ease-in-out;  /* Smooth pulsing */
+}
+
+/* Platform buttons styling */
+.platform-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.platform-button {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: #ff66b2;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 102, 178, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    font-size: 1.6em;
+    color: white;
+}
+
+.platform-button img {
+    max-width: 60px;
+    height: auto;
+}
+
+.platform-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 64, 129, 0.7);
+}
+
+/* Loading dots animation */
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    background-color: #ff99cc;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite; /* Pulse animation for the dots */
+}
+
+.loading-dots .dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loading-dots .dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.loading-dots .dot:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Adjust the size of the images to be visually appealing */
+#search-image, #tick-image, #transferring-image, #success-tick-image {
+    width: 120px;
+    height: auto;
+    margin: 10px 0;
+}
+
+#search-text, #verification-text, #connected-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+/* Simple transition when showing elements */
+.sequence-box {
+    transition: opacity 0.5s ease-out;
+}
+
+/* Define a pop-in effect */
+@keyframes popIn {
+    0% {
+        transform: scale(0.5); /* Start smaller */
+        opacity: 0;            /* Start invisible */
+    }
+    100% {
+        transform: scale(1);    /* Full size */
+        opacity: 1;             /* Fully visible */
+    }
+}
+
+/* Define a pop-out effect */
+@keyframes popOut {
+    0% {
+        transform: scale(1);    /* Full size */
+        opacity: 1;             /* Fully visible */
+    }
+    100% {
+        transform: scale(0.5);  /* Shrink down */
+        opacity: 0;             /* Fully invisible */
+    }
+}
+
+/* Apply the pop-in animation */
+.pop-in {
+    animation: popIn 0.5s ease forwards;  /* Animation duration and easing */
+}
+
+/* Apply the pop-out animation */
+.pop-out {
+    animation: popOut 0.5s ease forwards;  /* Animation duration and easing */
+}
+
+.pop-in-pulse {
+    animation: popIn 0.5s ease forwards, pulse 1s infinite ease-in-out;
+}
+
+/* Spinning animation for the loading cog */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinning-cog {
+    width: 100px;
+    height: 100px;
+    margin: 20px 0;
+    animation: spin 2s linear infinite;  /* Continuous spinning */
+}
+
+#connecting-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Styling for the transferring box image */
+.box-image {
+    width: 120px;
+    height: auto;
+    margin: 20px 0;
+}
+
+/* Transferring text styling */
+#transferring-text, #success-transfer-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Spinning cog animation for username transferring */
+#loading-username-image {
+    width: 100px;
+    height: auto;
+    animation: spin 2s linear infinite;
+}
+
+/* Styling for the transferring text */
+#username-transferring-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Style for the verification cross */
+.verification-cross {
+    width: 100px;
+    height: auto;
+    margin: 20px 0;
+}
+
+
+
+
+/* Balloons - floating upwards  --------------------------------------------------------------------------------------------------------------------------------- */
+/* Balloons - floating upwards  --------------------------------------------------------------------------------------------------------------------------------- */
+/* Balloons - floating upwards  --------------------------------------------------------------------------------------------------------------------------------- */
+/* Balloons - floating upwards  --------------------------------------------------------------------------------------------------------------------------------- */
+/* Balloons - floating upwards  --------------------------------------------------------------------------------------------------------------------------------- */
+/* Balloons - floating upwards  --------------------------------------------------------------------------------------------------------------------------------- */
+
+.balloon {
+    position: fixed;
+    bottom: -50px; /* Start below the viewport */
+    width: 60px;
+    height: 80px;
+    background-color: pink; /* Default color */
+    border-radius: 50% 50% 45% 45%; /* Balloon shape */
+    box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.1), /* Inner shadow for depth */
+                0 5px 10px rgba(0, 0, 0, 0.2); /* Outer shadow for float effect */
+    z-index: 1; /* Ensure the balloons are behind content */
+    animation: float 8s ease-in-out infinite;
+   
+}
+
+/* White balloon */
+.balloon.white {
+    background-color: white;
+}
+
+/* Reflection effect */
+.balloon::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    width: 20px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.6); /* Simulated reflection */
+    border-radius: 50%;
+    transform: rotate(-20deg);
+}
+
+/* Knot at the bottom */
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: inherit;
+    border-radius: 50%;
+}
+
+/* Balloon string */
+.balloon .string {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    width: 2px;
+    height: 80px;
+    background-color: #999;
+    transform-origin: top; /* Fixes string detachment by anchoring its top */
+    transform: translateX(-50%) rotate(0deg);
+    animation: sway 2s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(50vh) translateX(0);
+    }
+    100% {
+        transform: translateY(-120vh) translateX(-10px); /* Moves straight up and off the screen */
+    }
+}
+
+/* Swaying string */
+@keyframes sway {
+    0% {
+        transform: translateX(-50%) rotate(0deg); /* Keeps the string centered */
+    }
+    50% {
+        transform: translateX(-50%) rotate(5deg); /* Gentle sway */
+    }
+    100% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+}
+
+
+
+/* POP UP + announcemnt ------------------------------------------------------------------------------------------------ */
+/* POP UP + announcemnt ------------------------------------------------------------------------------------------------ */
+/* POP UP + announcemnt ------------------------------------------------------------------------------------------------ */
+/* POP UP + announcemnt ------------------------------------------------------------------------------------------------ */
+/* POP UP + announcemnt ------------------------------------------------------------------------------------------------ */
+
+
+/* Popup box for claims */
+#claim-popup {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 250px;
+    z-index: 10; /* Above balloons, but below content */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#claim-popup.hidden {
+    opacity: 0;
+    transform: translateY(100px); /* Hidden by default */
+}
+
+.popup-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.popup-content {
+    flex-grow: 1;
+}
+
+#claim-username {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+#claim-message {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+
+/* Full-width announcement strip */
+.promo-strip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
+    color: white;
+    text-align: center;
+    padding: 8px 0;
+    font-family: 'Refinery 95', sans-serif; /* Match your font */
+    font-size: 15px;
+    z-index: 1000; /* Make sure it's on top */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Add subtle shadow for depth */
+    transition: background-color 0.3s ease;
+}
+
+/* Promo link styling */
+.promo-link {
+    color: #ffffff; /* Bright, attention-grabbing color */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.promo-link:hover {
+    color: #ffecf3; /* Slight change on hover */
+    transform: scale(1.05); /* Grow slightly on hover */
+}
+
+.promo-strip:hover {
+    background-color: rgba(0, 0, 0, 0.4); /* Make background fully opaque on hover */
+}
+
+#verify-btn {
+    padding: 10px 20px;
+    background-color: #F15249;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Add some margin to space it from the verification text */
+}
